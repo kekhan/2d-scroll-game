@@ -29,7 +29,7 @@ function init(){
 
 const usedbg = [];
 
-const playerSpriteSheet = "sprite3.png";
+const playerSpriteSheet = "player.png";
 image.src = playerSpriteSheet;
 
 let bgImg = new Image();
