@@ -57,7 +57,7 @@ function game_object(x,y, currentFrame, rows, columns,imgWidth, imgHeight,srcX,
  
     }
   this.update = function(){
-     if(window.key == 39 && this.x <= bgImg.width+100){
+     if(window.key == 39 && this.x <= bgImg.width+350){
         this.srcY = 1*colSize;
         this.currentFrame = ++this.currentFrame % this.columns;
         console.log(x,bgImg.width+500);
@@ -69,7 +69,7 @@ function game_object(x,y, currentFrame, rows, columns,imgWidth, imgHeight,srcX,
         this.x = this.x-20;
         }
      this.srcX = this.currentFrame * rowSize;
-     if (this.x >= bgImg.width && window.key == 32) {
+     if (this.x >= bgImg.width+300 && window.key == 32) {
          switch (count) {
            case 1:
              bgImg.src = bg[count];
