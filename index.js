@@ -16,16 +16,10 @@ window.addEventListener("keyup",function(e){
  window.key = false;
  console.log(window.key);
 });
-window.onload = function (){
- window.addEventListener('resize',init,false);
- init();
-}
 
-// init
-function init(){
- canvas.width = window.innerWidth;
- canvas.height = window.innerHeight;
-}
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 
 const usedbg = [];
 
