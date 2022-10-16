@@ -57,7 +57,7 @@ function game_object(x,y, currentFrame, rows, columns,imgWidth, imgHeight,srcX,
  
     }
   this.update = function(){
-     if(window.key == 39 && this.x <= bgImg.width+385){
+     if(window.key == 39 && this.x <= bgImg.width+365){
         this.srcY = 1*colSize;
         this.currentFrame = ++this.currentFrame % this.columns;
         console.log(x,bgImg.width+500);
