@@ -1,4 +1,8 @@
-//Canvas element from html file
+// Hide loading screen after assets load
+PIXI.Loader.shared.add('sprite', 'player.png').load(() => {
+    document.getElementById('loading-screen').style.display = 'none';
+
+    //Canvas element from html file
 let canvas = document.getElementById('canvas');
 let context = canvas.getContext('2d');
 
@@ -23,8 +27,7 @@ canvas.height = window.innerHeight;
 
 const usedbg = [];
 
-const playerSpriteSheet = "player.png";
-image.src = playerSpriteSheet;
+image.src = sprite;
 
 let bgImg = new Image();
 bgImg.width = window.innerWidth / 3;
@@ -97,3 +100,6 @@ setInterval(function(){
   context.clearRect(0,0,canvas.width,canvas.height)
   main_player.draw();
 },250);
+});
+
+
