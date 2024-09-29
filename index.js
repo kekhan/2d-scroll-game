@@ -9,7 +9,7 @@ const app = new PIXI.Application({
 // Hide loading screen after assets load
 PIXI.Loader.shared
     .add('sprite', 'player.png').load(() => {
-    .add('key', 'path/to/improved_door_key.png') // Load the key sprite
+    .add('key', 'door_key.png') // Load the key sprite
     .load(setup);
     
     document.getElementById('loading-screen').style.display = 'none';
