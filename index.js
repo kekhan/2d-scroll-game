@@ -27,7 +27,8 @@ PIXI.Loader.shared.add('sprite', 'player.png').load(() => {
     
     const usedbg = [];
     
-    image.src = sprite;
+    const playerSpriteSheet = "player.png";
+    image.src = playerSpriteSheet;
     
     let bgImg = new Image();
     bgImg.width = window.innerWidth / 3;
