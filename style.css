@@ -1,0 +1,59 @@
+/* General body styling to center the canvas and remove default margin */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Disable scrolling */
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #3498db); /* Gradient background */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Canvas styling to fill the screen */
+canvas {
+    display: block; /* Remove the inline nature of canvas */
+    border: 5px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+    background-color: #000; /* Black background for the canvas */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+}
+
+/* Optional: Styling for a loading screen */
+#loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Ensure it sits on top */
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Animation for loading text */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Apply animation to the loading text */
+#loading-screen span {
+    animation: pulse 1s infinite;
+}
