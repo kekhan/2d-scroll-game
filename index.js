@@ -8,7 +8,7 @@ const app = new PIXI.Application({
 
 // Hide loading screen after assets load
 PIXI.Loader.shared
-    .add('sprite', 'player.png').add('key', 'door_key.png')load(() => {
+    .add('sprite', 'player.png').add('key', 'door_key.png').load(() => {
         document.getElementById('loading-screen').style.display = 'none';
         setup();
     
