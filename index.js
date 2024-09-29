@@ -12,7 +12,7 @@ PIXI.Loader.shared
     .add('key', 'door_key.png') // Load the key sprite
     .load(() => {
         document.getElementById('loading-screen').style.display = 'none';
-        setup() 
+        setup();
     
     //Canvas element from html file
         
