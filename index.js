@@ -1,16 +1,28 @@
+// Initialize the Pixi application
+const app = new PIXI.Application({
+    view: document.getElementById('canvas'),
+    width: window.innerWidth,
+    height: window.innerHeight,
+    backgroundColor: 0x1099bb
+});
+
 // Hide loading screen after assets load
-PIXI.Loader.shared.add('sprite', 'player.png').load(() => {
+PIXI.Loader.shared
+    .add('sprite', 'player.png').load(() => {
+    .add('key', 'path/to/improved_door_key.png') // Load the key sprite
+    .load(setup);
+    
     document.getElementById('loading-screen').style.display = 'none';
 
 //Canvas element from html file
-    let canvas = document.getElementById('canvas');
-    let context = canvas.getContext('2d');
     
     // global Variables
     const currentBg = 0;
     const bg = ["room2.png","livingRoom.png","kitchen.png","bg.png"];
     let count =0;
     let image = new Image();
+    let key;
+
     
     window.addEventListener("keydown",function(e){
      window.key = e.keyCode;
@@ -20,16 +32,31 @@ PIXI.Loader.shared.add('sprite', 'player.png').load(() => {
      window.key = false;
      console.log(window.key);
     });
-    
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+
+// Setup key function after loading key asset
+    function setup() {
+        // Create key sprite
+        key = new PIXI.Sprite(PIXI.Loader.shared.resources['key'].texture);
+        key.x = Math.random() * (app.renderer.width - 50); // Random position
+        key.y = Math.random() * (app.renderer.height - 50);
+        key.anchor.set(0.5);
+        app.stage.addChild(key);
+
+    // Add interaction
+    app.stage.interactive = true;
+    app.stage.on('pointerdown', onPointerDown);
+
+    // Start the game loop
+    app.ticker.add(gameLoop);
+}
+
     
     
     const usedbg = [];
     
     const playerSpriteSheet = "player.png";
     image.src = playerSpriteSheet;
-    
+
     let bgImg = new Image();
     bgImg.width = window.innerWidth / 3;
     bgImg.src = bg[count];
@@ -57,7 +84,7 @@ PIXI.Loader.shared.add('sprite', 'player.png').load(() => {
           
           context.drawImage(bgImg,0,0);
           context.drawImage(image,this.srcX,this.srcY,rowSize, colSize,this.x,this.y,rowSize, colSize);
-          context.clearRect(canvas.width,canvas.height,0,0);
+          context.clearRect(app.renderer.width,app.renderer.height,0,0);
      
         }
       this.update = function(){
@@ -98,9 +125,24 @@ PIXI.Loader.shared.add('sprite', 'player.png').load(() => {
     
     setInterval(function(){
       main_player.update();
-      context.clearRect(0,0,canvas.width,canvas.height)
+      context.clearRect(0,0,app.renderer.width,app.renderer.height)
       main_player.draw();
     },250);
+
+// Pointer down event for picking up the key
+function onPointerDown(event) {
+    const mousePos = event.data.global;
+
+    // Check for collision with the key
+    if (key.getBounds().contains(mousePos.x, mousePos.y)) {
+        console.log("Key picked up!");
+        
+        // Remove the key from the stage
+        app.stage.removeChild(key);
+        key.destroy(); // Clean up
+        key = null; // Reset the key variable or handle inventory
+    }
+}
 });
 
 
