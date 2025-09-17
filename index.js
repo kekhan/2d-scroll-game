@@ -2,15 +2,23 @@
 PIXI.Loader.shared.add('sprite', 'player.png').load(() => {
     document.getElementById('loading-screen').style.display = 'none';
 
-//Canvas element from html file
+    //Canvas element from html file
     let canvas = document.getElementById('canvas');
     let context = canvas.getContext('2d');
+    
+    // canvas width and height
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     
     // global Variables
     const currentBg = 0;
     const bg = ["room2.png","livingRoom.png","kitchen.png","bg.png"];
     let count =0;
     let image = new Image();
+
+    const usedbg = [];
+
+    // event listeners
     
     window.addEventListener("keydown",function(e){
      window.key = e.keyCode;
@@ -20,13 +28,8 @@ PIXI.Loader.shared.add('sprite', 'player.png').load(() => {
      window.key = false;
      console.log(window.key);
     });
-    
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    
-    const usedbg = [];
-    
+
+    // store the spritesheet image file
     const playerSpriteSheet = "player.png";
     image.src = playerSpriteSheet;
     
@@ -37,6 +40,8 @@ PIXI.Loader.shared.add('sprite', 'player.png').load(() => {
     count+=1;
     
     usedbg.push(bgImg.src);
+
+    // game play functions 
     
     function game_object(x,y, currentFrame, rows, columns,imgWidth, imgHeight,srcX,
        srcY, is_person, is_interact){
