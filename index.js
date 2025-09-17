@@ -18,6 +18,15 @@ PIXI.Loader.shared.add('sprite', 'player.png').load(() => {
 
     const usedbg = [];
 
+    let bgImg = new Image();
+    bgImg.width = window.innerWidth / 3;
+    bgImg.src = bg[count];
+    // counts bg image index in the bg array
+    
+    count+=1;
+    // pushes brIMG into used background array.
+    usedbg.push(bgImg.src);
+
     // event listeners
     
     window.addEventListener("keydown",function(e){
@@ -33,14 +42,6 @@ PIXI.Loader.shared.add('sprite', 'player.png').load(() => {
     const playerSpriteSheet = "player.png";
     image.src = playerSpriteSheet;
     
-    let bgImg = new Image();
-    bgImg.width = window.innerWidth / 3;
-    bgImg.src = bg[count];
-    
-    count+=1;
-    
-    usedbg.push(bgImg.src);
-
     // game play functions 
     
     function game_object(x,y, currentFrame, rows, columns,imgWidth, imgHeight,srcX,
