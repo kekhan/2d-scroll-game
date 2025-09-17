@@ -3,8 +3,9 @@
 Let’s create a simple 2D side-scroll game in JavaScript.
 This tutorial will walk you through setting up game movement and graphics. You will learn to animate a sprite and add backgrounds. 
 You can find the game demo and play it at the following links:
-Game demo: https://kekhan.github.io/2d-scroll-game/
-Game code: https://github.com/kekhan/2d-scroll-game/
+
+* Game demo: https://kekhan.github.io/2d-scroll-game/
+* Game code: https://github.com/kekhan/2d-scroll-game/
 
 ## Game Controls
 
