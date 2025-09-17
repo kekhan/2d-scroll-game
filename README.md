@@ -83,79 +83,67 @@ The player sprite sheet
 The code below creates function to animate a spritesheet. This functions gives movement to your character. The game object function allows you to create different game objects, such as players, keys, and other game objects.
 function game_object(x,y, currentFrame, rows, columns,imgWidth, imgHeight,srcX,
   srcY, is_person, is_interact){}
-The game_object parameters can be adjusted when you create the new game_object. For the main player object, set the variables to the following values.
-Set the parameters for the game objects as follows:
-Var main_player = new game_object(500, 230, 0, 2, 4, 800, 600, true, true); 
 
-The above x and y variables store the position of the character on the background images.
-The currentFrame stores the single square frame of the character sprite sheet. The currentFrame starts at 0.
-The sprite sheet has two rows and four columns. A
-Create a rows variable and assign the rows variable to 2
-Create a columns variable and assign the columns variable to 4.
-The size of the image is 800 by 600.
-Create the width and height variables for the sprite sheet.
-The sprite sheet width is 800 and the height is 600.
-Create the variable for the size of the row and the size of the column. These variables track the frame size.
-srcX is the x position on the sprite sheet. The sprite sheet has a srcX value of 800 and a srcY of 600. That means 800 pixels to the right. The srcY position is the y position on the sprite sheet. That means 600 pixels down.
-Once the parameters are set,, use the this keyword to initiate each object variable inside the the game_object function. The this method binds the game object to a variable or a function.
+The game_object parameters can be adjusted when you create the new game_object. For the main player object, set the variables to the following values.
+
+Set the parameters for the game objects as follows:
+
+1. Var main_player = new game_object(500, 230, 0, 2, 4, 800, 600, true, true); 
+2. The above x and y variables store the position of the character on the background images.
+3. The currentFrame stores the single square frame of the character sprite sheet. The currentFrame starts at 0.
+4. The sprite sheet has two rows and four columns. A
+5. Create a rows variable and assign the rows variable to 2
+6. Create a columns variable and assign the columns variable to 4.
+7. The size of the image is 800 by 600.
+8. Create the width and height variables for the sprite sheet.
+9. The sprite sheet width is 800 and the height is 600.
+10. Create the variable for the size of the row and the size of the column. These variables track the frame size.
+11. srcX is the x position on the sprite sheet. The sprite sheet has a srcX value of 800 and a srcY of 600. That means 800 pixels to the right. The srcY position is the y position on the sprite sheet. That means 600 pixels down.
+12. Once the parameters are set,, use the this keyword to initiate each object variable inside the the game_object function. The this method binds the game object to a variable or a function.
 
 
 ### 2. The this.draw Method 
 
 Inside the game_object function, create two methods, update and draw. The draw method draws the image on the canvas screen.
+
 The draw method also creates the background image.
-context.drawImage takes multiple parameters about the game character.
-context.drawImage(image,this.srcX,this.srcY,rowSize, colSize,this.x,this.y,rowSize, colSize);
-Inside the draw method, the clearRect method clears the canvas to have a smooth animation transition.
-Clear the canvas area using context.clearRect(canvas.width,canvas.height,0,0);
-3. This.update Method
-The update method updates the player’s position and background based on the event listener. This functions naked sure the that when the left arrow is being pressed, only the left moving sprite sheet is used. 
- In this part, the game character renders on the screen and goes into different rooms.
+
+1. context.drawImage takes multiple parameters about the game character.
+2. context.drawImage(image,this.srcX,this.srcY,rowSize, colSize,this.x,this.y,rowSize, colSize);
+3. Inside the draw method, the clearRect method clears the canvas to have a smooth animation transition.
+4. Clear the canvas area using context.clearRect(canvas.width,canvas.height,0,0);
+   
+### 3. This.update Method
+
+The update method updates the player’s position and background based on the event listener. This function makes sure that when the left arrow is being pressed, only the left moving sprite sheet is used. 
+ 
+In this part, the game character renders on the screen and goes into different rooms.
 
 Here is an explanation of the sprite sheet shown above. The sprite sheet has two rows, r1 and r2. It also has 4 columns. Each frame has a row and a column index. For example, the third frame on the top is in row 1(r1) and column 3. Row 1 includes images of the character moving left while row 2 has images of the character moving right.
 In the code, the rows, this.srcY, are assigned to zero for top and the bottom row is assigned to 1. The image seen on screen or  the single image frame is assigned to this.srcX.
 
-4. Move the character across the canvas
-Move the character to the right
+### 4. Move the character across the canvas
+#### Move the character to the right
 In the update function, create a conditional statement that checks if the right and left arrows are pressed. The character sprite sheet has two rows and the bottom row moves right.
 The srcY variable is assigned to the top of the second row. Look at the sprite sheet and srcY is assigned to the height of a single frame.
 If the x position of the main player is less than 450 plus the sprite sheet width and the user presses the right arrow, move the frame position and move the character object 20 pixels to the right.
 
-Move the character to the left
+#### Move the character to the left
 
 The if conditional checks if the user presses the right arrow(key:37) and the character object’s x position is greater than 0.
 The sprite sheet frame moves to the next rectangle and the y position of the spite sheet is assigned to 0.
 The x position of the character objects moves 20 pixels to the left.
 
-5. Background Switch
+### 5. Background Switch
 The background changes when the player goes near the exit and presses the space button.
 The switch case loops through each background in the bg array.
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Game loop
+## Game loop
 The game loop repeats the animation until the game is over or until the user exits the window.
 Create the main_player object: use new game_object() with your parameters.
 Inside the setInterval function, call main_player.update to update the player’s position and frame. 
 Call main_player.draw to render the game images to the screen. 
 Clear the canvas before calling the draw method on the main_player object.
 
-Conclusion
+## Conclusion
 Creating a 2d Javascript game is exciting and does not require a game engine. If you followed this 2D game guide, you should have a character moving left and right between different backgrounds. 
